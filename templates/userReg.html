@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>User Registration</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/userreg.css' %}">
+	<script src="https://kit.fontawesome.com/eb4a4eb97c.js" crossorigin="anonymous"></script>
+	<!-- <style>
+		.reg-container{
+			width: 100%;
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+		}
+		.reg-container > img{
+			width: 100%;
+			height: 100%;
+		}
+	</style> -->
+</head>
+<body>
+	<div class="reg-container">
+		<img src="{% static 'images\login_img.jpeg' %}" />
+		<form method="POST" action="{% url 'userreg' %}" id="form">
+			{% csrf_token %}
+			<h1>User Registration</h1>
+			<div class="name">
+				<label for="username">User Name</label>
+				<i class="fas fa-user"></i>
+				<!-- <input type="text" name="username" id="username" placeholder="username"> -->
+				<span>{{form.username}}</span>
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div class="name">
+				<label for="fname">First Name</label>
+				<i class="fas fa-user"></i>
+				<input type="text" name="fname" id="fname" placeholder="Enter FirstName">
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div class="name">
+				<label for="lname">Last Name</label>
+				<i class="fas fa-user"></i>
+				<input type="text" name="lname" id="lname" placeholder="Enter LastName">
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div>
+				<label for="email">Email</label>
+				<i class="fas fa-envelope"></i>
+
+				<!-- <input type="email" name="email" id="email" placeholder="abc@gmail.com"> -->
+				<span>{{form.email}}</span>
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+
+			</div>
+
+			<div>
+				<label for="password1">Password</label>
+				<i class="fas fa-lock"></i>
+				<!-- <input type="password" name="password1" id="password1" placeholder="Enter Password"> -->
+				<span>{{form.password1}}</span>
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+
+			<div>
+				<label for="password2">Confirm Password</label>
+				<i class="fas fa-lock"></i>
+				<!-- <input type="password" name="password2" id="password2" placeholder="Enter Confirm Password"> -->
+				<span>{{form.password2}}</span>
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div>
+				<label for="dob">Date of Birth</label>
+				<i class="fas fa-lock"></i>
+				<input type="date" name="dob" id="dob" placeholder=" Enter Date of Birth">
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div>
+				<label for="mobile">Mobile Number</label>
+				<i class="fas fa-lock"></i>
+				<input type="number" name="mobile" id="mobile" placeholder="Enter Mobile Number">
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div>
+				<label for="place">Location</label>
+				<i class="fas fa-lock"></i>
+				<input type="text" name="place" id="place" placeholder="Enter Place">
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div>
+				<label for="acc_type">Select Account Type</label>
+				<i class="fas fa-lock"></i>
+				<select name="acctyp" id="acc_type">
+					<option></option>
+					<option value="savings">Savings</option>
+					<option value="current">Current</option>
+				</select>
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<div>
+				<label for="deposit">Deposit Amount</label>
+				<i class="fas fa-lock"></i>
+				<input type="number" name="deposit" id="deposit" min="500" placeholder="Deposit Amount">
+				
+				<i class="fas fa-exclamation-circle failure-icon"></i>
+    			<i class="far fa-check-circle success-icon"></i>
+    
+    			<div class="error"></div>
+			</div>
+			<br/>
+
+			<button id="btn" type="submit">Submit</button>
+			<button type="reset">Reset</button>
+
+
+		</form>
+		
+	</div>
+<!-- <script type="text/javascript" src="{% static 'js\userreg.js' %}" ></script>	 -->
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>User-Details</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/userdetail.css' %}">
+</head>
+<body>
+	<div class="userdetails">
+		<img src="{% static 'images\admin_page.jpeg' %}" />
+		<div class="user">
+			<h1>User details</h1>
+			<section>
+				{% for i in user_data2 %}
+				<button>Transaction details</button>
+				<button>edit</button>
+				{% if user_data2.acc_status == pending  %}
+				<button><a href="{% url 'activateuser' i.user_id %}">Active</a></button>
+				{% else %}
+				<button><a href="{% url 'blockuser' user_data2.user_id %}">Block</a></button>
+				{% endif %}
+				{% endfor %}
+			</section>
+			{% for i in user_data1 %}
+			<table>
+				<tr>
+					<th>UserName</th>
+					<td>{{i.username}}</td>
+				</tr>
+				<tr>
+					<th>First-Name</th>
+					<td>{{i.f_name}}</td>
+				</tr>
+				<tr>
+					<th>Last-Name</th>
+					<td>{{i.l_name}}</td>
+				</tr>
+				<tr>
+					<th>Email_id</th>
+					<td>{{i.email}}</td>
+				</tr>
+				<tr>
+					<th>Date of Birth</th>
+					<td>{{i.dob}}</td>
+				</tr>
+				<tr>
+					<th>Mobile_No</th>
+					<td>{{i.mobile_no}}</td>
+				</tr>
+				<tr>
+					<th>Location</th>
+					<td>{{i.location}}</td>
+				</tr>
+			{% endfor %}
+			{% for j in user_data2 %}
+				<tr>
+					<th>Account_No</th>
+					<td>{{j.acc_no}}</td>
+				</tr>
+				<tr>
+					<th>Account_Status</th>
+					<td>{{j.acc_status}}</td>
+				</tr>
+				<tr>
+					<th>Account_Balance</th>
+					<td>{{j.acc_balance}}</td>
+				</tr>
+			</table>
+			{% endfor %}
+
+			{% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <h1>{{message}}</h1>
+                {% endfor %}        
+            </div>
+            {% endif %}
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>

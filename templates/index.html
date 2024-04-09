@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online Banking</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div class="index-container">
+		<img src="{% static 'images\bank_front.jpeg' %}">
+		<div class="sign-options">
+			<h1>Online Banking</h1>
+			<button><a href="{% url 'adminlogin' %}">Admin-login</a></button>
+			<button><a href="{% url 'userlogin' %}">User-login</a></button>
+		</div>
+	</div>	
+
+
+<script type="text/javascript" src="{% static 'js' %}" ></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.userdetails{
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden;
+}
+.userdetails > img{
+	width: 100%;
+	height: 100%;
+}
+.user{
+	width: 100%;
+	position: absolute;
+	top: 70px;
+	left: 100px;
+	line-height: 2;
+/*	text-align: center;*/
+}
+.user table{
+	width: 80%;
+	height: 200px
+	overflow-y: scroll;
+	background-color: greenyellow;
+}
+.user table,th,td{
+	border: 2px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+.user section{
+	position: absolute;
+	top: -70px;
+	right: 250px;
+}
+.user section button{
+	padding: 10px 10px;
+	border: none;
+	border-radius:20px;
+	background-color: blue;
+	color: whitesmoke;
+	margin: 20px;
+	cursor: pointer;	
+}
+.user section a{
+	text-decoration: none;
+	color: whitesmoke;
+}
