@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Deposit</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/deposit.css'%}">
+</head>
+<body>
+	<div class="depositservice" style="background-image: url('{% static 'images/banking.jpeg' %}');">
+		<h1>Hi, {{userdet.username}}</h1>
+		<div class="deposit">
+			<form method="POST" action="{% url 'deposit' userdet.user_id %}">
+				{% csrf_token %}
+				<div>
+					<label>Enter Amount</label>
+					<input type="number" name="amt" min="1.0" placeholder="Enter your Amount" />
+				</div>
+				<div>
+					<button type="submit">Deposit</button>
+					<button type="reset">Clear</button>
+				</div>	
+			</form>	
+		</div>		
+
+		{% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <h1>{{message}}</h1>
+                {% endfor %}        
+            </div>
+        {% endif %}
+	
+		
+	</div>
+
+</body>
+</html>

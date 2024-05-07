@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Transactions Details</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/admindash.css' %}">
+</head>
+<body>
+	<div class="admindash" style="background-image: url('{% static 'images\admin_page.jpeg' %}');">
+		<nav>
+			<h1>Welcome {{admin.username}}</h1>
+			<button><a href="{% url 'adminlogout' %}">Logout</a></button>
+			<ul>
+				<li><a href="{% url 'admindash' %}">User Details</a></li>
+				<li><a href="">Amount Details</a></li>
+				<li><a href="">Transactions</a></li>
+			</ul>
+		</nav>	
+		<div class="user-list">
+			<h1>Admin DashBoard</h1>
+			<form method="POST" action="">
+				{% csrf_token %}
+				<h1>User Transaction Details</h1>
+				<table>
+					<tr>
+						<th>Id</th>
+						<th>Date</th>
+						<th>Transaction Type</th>
+						<th>From_Account</th>
+						<th>To_Account</th>
+						<th>Amount</th>
+						<th>Remarks</th>
+						<th>Sender_User_Id</th>
+					</tr>
+					{% for i in statements %}
+					<tr>
+						<td>{{i.transaction_id}}</td>
+						<td>{{i.date}}</td>
+						<td>{{i.transaction_type}}</td>
+						<td>{{i.from_account_user}}</td>
+						<td>{{i.to_account_user}}</td>
+						<td>{{i.amount}}</td>
+						<td>{{i.remarks}}</td>
+						<td>{{i.user_id}}</td>
+					</tr>
+					{% endfor %}	
+				</table>
+				
+	</div>
+
+</body>
+</html>

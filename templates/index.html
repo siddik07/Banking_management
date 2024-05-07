@@ -4,12 +4,47 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Online Banking</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<title>Banking_management</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.index-container{
+			width: 100%;
+			min-height: 100vh;
+			background-repeat: no-repeat;
+			background-size:100% ;
+			color: white;
+		}
+		.sign-options{
+			text-align: center;
+			padding-top:50px;
+		}
+		.sign-options h1{
+			font-size: 80px;
+			letter-spacing: 5px;
+			padding: 10px;
+		}
+		.sign-options button{
+			background: none;
+			padding: 10px 20px;
+			border-radius: 25px;
+			border: 2px solid white;
+			cursor: pointer;
+			margin: 10px;
+		}
+		.sign-options a{
+			color: white;
+			text-decoration: none;
+		}
+
+
+	</style>
 </head>
 <body>
-	<div class="index-container">
-		<img src="{% static 'images\bank_front.jpeg' %}">
+	<div class="index-container" style="background-image: url('{% static 'images/bank_front.jpeg' %}');">
 		<div class="sign-options">
 			<h1>Online Banking</h1>
 			<button><a href="{% url 'adminlogin' %}">Admin-login</a></button>
@@ -17,7 +52,5 @@
 		</div>
 	</div>	
 
-
-<script type="text/javascript" src="{% static 'js' %}" ></script>
 </body>
 </html>

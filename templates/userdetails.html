@@ -8,19 +8,15 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/userdetail.css' %}">
 </head>
 <body>
-	<div class="userdetails">
-		<img src="{% static 'images\admin_page.jpeg' %}" />
+	<div class="userdetails" style="background-image:url('{% static 'images\admin_page.jpeg' %}');">
 		<div class="user">
 			<h1>User details</h1>
 			<section>
 				{% for i in user_data2 %}
-				<button>Transaction details</button>
-				<button>edit</button>
-				{% if user_data2.acc_status == pending  %}
-				<button><a href="{% url 'activateuser' i.user_id %}">Active</a></button>
-				{% else %}
-				<button><a href="{% url 'blockuser' user_data2.user_id %}">Block</a></button>
-				{% endif %}
+				<button><a href="{% url 'particularstatements' i.user_id %}">Transaction details</a></button>
+				<button><a href="{% url 'useredit' i.user_id %}">edit</a></button>
+				<button><a href="{% url 'activateuser' i.user_id %}">Activate</a></button>
+				<button><a href="{% url 'blockuser' i.user_id %}">Block</a></button>
 				{% endfor %}
 			</section>
 			{% for i in user_data1 %}

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Statements</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/statement.css' %}" />
+</head>
+<body>
+	<div class="statement" style="background-image: url('{% static 'images/admin_page.jpeg' %}');">
+		<nav>
+		<h1>Statements of {{useracc.user_name}}</h1>
+		<form method="POST" action="{% url 'particularstatements' useracc.user_id %}">
+			{% csrf_token %}
+			<div>
+				<label>Transaction Id</label>
+				<input type="number" name="id" placeholder="enter"> 
+			</div>
+			<div>
+				<label>Transaction Date</label>
+				<input type="date" name="date">
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+		</nav>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Date</th>
+				<th>Transaction Type</th>
+				<th>To_Account</th>
+				<th>Amount</th>
+				<th>Remarks</th>
+			</tr>
+			{% for i in statements %}
+			<tr>
+				<td>{{i.transaction_id}}</td>
+				<td>{{i.date}}</td>
+				<td>{{i.transaction_type}}</td>
+				<td>{{i.to_account_user}}</td>
+				<td>{{i.amount}}</td>
+				<td>{{i.remarks}}</td>
+			</tr>
+			{% endfor %}	
+		</table>
+		{% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <h1>{{message}}</h1>
+                {% endfor %}        
+            </div>
+        {% endif %}
+		
+	</div>
+
+</body>
+</html>

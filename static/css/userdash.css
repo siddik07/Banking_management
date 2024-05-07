@@ -6,6 +6,72 @@
 .userdash{
 	width: 100%;
 	height: 100vh;
-	background: url(images/banking.jpeg);
+	background-repeat: no-repeat;
 	background-size:100% ;
+	color: white;
+}
+.userdash nav{
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+}
+.userdash nav h1{
+	font-size: 40px;
+}
+.userdash nav button{
+  width: 70px;
+  height: 25pxpx;
+  background-color: #f2796e;
+  border: 2px solid #f2796e;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+} 
+.userdash nav button a{
+	text-decoration: none;
+	color: #fff;
+}
+.userdash section{
+	margin: auto;
+	margin-top: 50px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	gap: 50px;
+
+}  
+
+.userdash section button{
+  margin-top: 15px;
+  padding: 10px 20px;
+  height: 45px;
+  background-color: #f2796e;
+  border: 2px solid #f2796e;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+.userdash section button a{
+	text-decoration: none;
+	color: white;
+}
+.userdash section:hover >:not(:hover){
+	transform: scale(0.8);
+}
+.userdash section button:hover{
+	transform: scale(1.5);
+}
+
+.messages{
+	width: 100%;
+	text-align: center;
+	margin: 20px;
 }

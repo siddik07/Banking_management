@@ -5,12 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>AdminLogin</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 	<script src="https://kit.fontawesome.com/eb4a4eb97c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="login-container">
-		<img src="{% static 'images\login_img.jpeg' %}" />
+	<div class="login-container" style="background-image: url('{% static 'images/login_img.jpeg' %}');">
 		<form action="{% url 'adminlogin' %}" method="POST" id="form">
 			{% csrf_token %}
 			<h1>Admin Login</h1>
@@ -18,21 +17,11 @@
 				<label for="username">User Name</label>
 				<i class="fas fa-user"></i>
 				<input type="text" name="username" id="username" placeholder="username">
-				
-				<i class="fas fa-exclamation-circle failure-icon"></i>
-    			<i class="far fa-check-circle success-icon"></i>
-    
-    			<div class="error"></div>
 			</div>
 			<div>
 				<label for="password">Password</label>
 				<i class="fas fa-lock"></i>
 				<input type="password" name="password" id="password" placeholder="password">
-				
-				<i class="fas fa-exclamation-circle failure-icon"></i>
-    			<i class="far fa-check-circle success-icon"></i>
-    
-    			<div class="error"></div>
 			</div>
 
 			<button id="btn" type="submit">Submit</button>
@@ -47,6 +36,5 @@
 		</form>
 		
 	</div>
-<!-- <script type="text/javascript" src="{% static 'js\login.js' %}" ></script> -->
 </body>
 </html>

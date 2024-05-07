@@ -6,12 +6,35 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>User-page</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/userdash.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/userdash.css' %}">
+	
 </head>
 <body>
-	<div class="userdash">
+	<div class="userdash" style="background-image: url('{% static 'images/banking.jpeg' %}');">
+		<nav>
+			<h1>Welcome {{acc_user.user_name}}</h1>	
+			<button><a href="{% url 'userlogout' %}">Logout</a></button>
+		</nav>
+		<h1>Account No:{{acc_user.acc_no}}</h1>
+		<h1>Accouny Type:{{acc_user.account_type}}</h1>	
+
+		<section>
+			<button><a href="{% url 'balance' acc_user.user_id %}">Check Balance</a></button>
+			<button><a href="{% url 'deposit' acc_user.user_id %}">Deposit</a></button>
+			<button><a href="{% url 'withdraw' acc_user.user_id %}">Withdraw</a></button>
+			<button><a href="{% url 'transfer' acc_user.user_id %}">Transfer Money</a></button>
+			<button><a href="{% url 'userstatements' acc_user.user_id %}">Transaction Details</a></button>
+		</section>	
+			
+			{% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <h1>{{message}}</h1>
+                {% endfor %}        
+            </div>
+            {% endif %}
+
 		
 	</div>
-
 </body>
 </html>
