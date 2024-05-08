@@ -71,5 +71,8 @@ h1{
 	transform: translate(-50%,50%);
 	bottom: 20%;
 }
+.transfer .messages{
+	bottom: 5%;
+}
 
 
