@@ -22,9 +22,10 @@
 				<label for="password">Password</label>
 				<i class="fas fa-lock"></i>
 				<input type="password" name="password" id="password" placeholder="password">
+				<a class="forget" href="{% url 'password_reset' %}">Forget Password</a>
 			</div>
 
-			<button id="btn" type="submit">Submit</button>
+			<button id="btn" type="submit">Login</button>
 			{% if messages %}
             <div class="messages">
                 {% for message in messages %}

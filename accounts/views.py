@@ -5,7 +5,8 @@ from django.core.mail import send_mail
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
+from .form import CustomUserForm
 from datetime import datetime
 from django.db import transaction
 import random as r
@@ -58,7 +59,7 @@ def adminLogout(request):
 # userregisterpage
 def userRegister(request):
 	if request.method=='POST':
-		form=UserCreationForm(request.POST)
+		form=CustomUserForm(request.POST)
 		data = request.POST
 		fname=data.get('fname')
 		lname=data.get('lname')
@@ -103,10 +104,12 @@ def userRegister(request):
 			print("form not valid")
 
 	else:	
-		form=UserCreationForm()
-		form.fields['username'].widget.attrs['placeholder']='Enter username'
-		form.fields['password1'].widget.attrs['placeholder']='Enter Password'
-		form.fields['password2'].widget.attrs['placeholder']='Conform Password'
+		form=CustomUserForm()
+		print(form)
+		# form.fields['username'].widget.attrs['placeholder']='Enter username'
+		# # form.fields['email'].widget.attrs['placeholder']='Enter Email'
+		# form.fields['password1'].widget.attrs['placeholder']='Enter Password'
+		# form.fields['password2'].widget.attrs['placeholder']='Conform Password'
 		return render(request,'userreg.html',{'form':form})
 
 
@@ -150,6 +153,22 @@ def userLogin(request):
 def userLogout(request):
 	logout(request)
 	return redirect('userlogin')
+
+#forgetPassword
+def pwdReset(request):
+	if request.method=='POST':
+		print("come")
+		accno=request.POST.get('accno')
+		Account=Account_Details.objects.filter(acc_no=accno).first() 
+		print(Account)
+		if Account is None:
+			messages.error(request,'Account No is Invalid,Enter Correct Account No..')
+			return redirect('pwdreset')
+		else:
+			return redirect('password_reset')	
+	else:
+		return render(request,'pwdreset.html')
+
 
 # userDash
 def userDash(request,pk):
@@ -334,14 +353,14 @@ def userStatements(request,pk):
 		date=request.POST.get('date')
 		print(date)
 		if Id == '':
-			statements=Transaction_history.objects.filter(date__contains=date,user_id=pk)
+			statements=Transaction_history.objects.filter(date__contains=date,user_id=pk).values()
 			print(statements)
 			print("work")
 		elif date =='':	
-			statements=Transaction_history.objects.filter(transaction_id=Id,user_id=pk)
+			statements=Transaction_history.objects.filter(transaction_id=Id,user_id=pk).values()
 			print(statements)
 		elif Id != '' and date !='':
-			statements=Transaction_history.objects.filter(transaction_id=Id,date__contains=date,user_id=pk)
+			statements=Transaction_history.objects.filter(transaction_id=Id,date__contains=date,user_id=pk).values()
 		if statements == []:
 			messages.error(request,'No Records Found')
 			print("work")
@@ -365,14 +384,14 @@ def particularUserStatements(request,pk):
 		date=request.POST.get('date')
 		print(date)
 		if Id == '':
-			statements=Transaction_history.objects.filter(date__contains=date,user_id=pk)
+			statements=Transaction_history.objects.filter(date__contains=date,user_id=pk).values()
 			print(statements)
 			print("work")
 		elif date =='':	
-			statements=Transaction_history.objects.filter(transaction_id=Id,user_id=pk)
+			statements=Transaction_history.objects.filter(transaction_id=Id,user_id=pk).values()
 			print(statements)
 		elif Id != '' and date !='':
-			statements=Transaction_history.objects.filter(transaction_id=Id,date__contains=date,user_id=pk)
+			statements=Transaction_history.objects.filter(transaction_id=Id,date__contains=date,user_id=pk).values()
 		if statements == []:
 			messages.error(request,'No Records Found')
 			print("work")
